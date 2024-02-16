@@ -5,11 +5,13 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 import { AngularFireModule } from "@angular/fire/compat";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { environment } from 'src/environments/environment';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,7 @@ import { environment } from 'src/environments/environment';
       messagingSenderId: "819670557652",
       appId: "1:819670557652:web:6263d4de6825872eda6c41",
       measurementId: "G-Y6PD8CK1X9",
-    })
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

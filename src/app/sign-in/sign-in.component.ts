@@ -9,12 +9,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignInComponent  implements OnInit {
 
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService ) {
+  }
 
   ngOnInit() {}
 
   async signIn() {
-    await this.AuthService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
+    await this.authService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
       console.log(response);
     })
     .catch((error: any) => {
@@ -23,12 +24,27 @@ export class SignInComponent  implements OnInit {
   }
 
   async register() {
-    await this.AuthService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
+    await this.authService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
       console.log(response);
     })
     .catch((error: any) => {
       console.error(error)
     });
   }
+
+  async loginWithGoogle() {
+    this.authService.loginWithGoogle().then((response: any) => {
+      console.log(response)
+    })
+    .catch((error: any) => {
+      console.error(error);
+    })
+  }
+
+  async getAccessToken() {
+    this.authService.getAccessToken().then((response: any) => {})
+  }
+
+
 
 }
