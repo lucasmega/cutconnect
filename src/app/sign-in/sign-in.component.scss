@@ -1,0 +1,42 @@
+.container-fluid {
+    opacity: 0.9;
+    width: 100vw;
+    height: 50vh;
+    position: fixed;
+    position: relative;
+    background-size: cover;
+    background-image: url('../../assets/img/background-02.png');
+    .logo {
+        top: 30%;
+        width: 100%;
+        color: #FFF;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        label {
+            font-size: 30px;
+            position: absolute;
+            inset: 0% 20% 5% 20%;
+        }
+    }
+    .form {
+        text-align: center;
+        inset: 120% 20% 5% 20%;
+        position: absolute;
+        transition: color 2s ease-in-out;
+        button {
+            width: 100%;
+            cursor: pointer;
+            border-radius: 25px;
+            span {
+                img {
+                    width: 20px;
+                }
+            }
+        }
+        label {
+            cursor: pointer;
+        }
+        
+    }
+}
