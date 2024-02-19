@@ -1,0 +1,41 @@
+.container-fluid {
+    .row:nth-child(1) {
+        text-align: center;
+        margin: 70px 0 50px 0;
+        label {
+            font-size: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+    }
+    .row:nth-child(2) {
+        text-align: center;
+        margin: 50px 0 50px 0;
+        label {
+            font-size: 17px;
+        }
+    }
+    .row:nth-child(3),.row:nth-child(4) {
+        width: 98%;
+        margin: 0 0 70px 0;
+    }
+    .row:nth-child(5) {
+        .col {
+            text-align: center;
+            margin: 0 0 40px 0;
+            button {
+                width: 90vw;
+                height: 54px;
+                border-radius: 25px;
+            }
+        }
+    }
+    .row:nth-child(6) {
+        .col {
+            text-align: center;
+            label {
+                cursor: pointer;
+            }
+        }
+    }
+}

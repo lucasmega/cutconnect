@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppModule } from 'src/app/app.module';
 
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent  implements OnInit {
+export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -20,6 +22,10 @@ export class LoginComponent  implements OnInit {
     .catch((error: any) => {
       console.error(error)
     });
+  }
+
+  toSignIn() {
+    this.router.navigate(['/sign-in'])
   }
 
 }

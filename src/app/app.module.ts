@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
+
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AngularFireModule } from "@angular/fire/compat";
@@ -11,10 +12,11 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireAuthModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCkvXl1FSoOLkS2A7btZpk5FR9PsUj1W6U",
