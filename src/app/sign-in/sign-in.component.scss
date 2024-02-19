@@ -6,37 +6,52 @@
     position: relative;
     background-size: cover;
     background-image: url('../../assets/img/background-02.png');
+
     .logo {
-        top: 30%;
+        top: 10%;
         width: 100%;
         color: #FFF;
-        position: absolute;
+        position: fixed;
         text-align: center;
         text-transform: uppercase;
+
         label {
             font-size: 30px;
-            position: absolute;
             inset: 0% 20% 5% 20%;
         }
     }
+
     .form {
         text-align: center;
-        inset: 120% 20% 5% 20%;
         position: absolute;
+        bottom: -50%; 
+        left: 50%;
+        transform: translateX(-50%);
         transition: color 2s ease-in-out;
+
         button {
+            height: 54px;
             width: 100%;
             cursor: pointer;
             border-radius: 25px;
-            span {
-                img {
-                    width: 20px;
-                }
+
+            span img {
+                width: 20px;
             }
         }
+
         label {
             cursor: pointer;
         }
-        
+    }
+    .text-fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        label {
+            font-size: 11px;
+        }
     }
 }
