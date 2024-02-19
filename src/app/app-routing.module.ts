@@ -3,11 +3,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth.guard';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   // {
   //   path: 'folder/:id',
