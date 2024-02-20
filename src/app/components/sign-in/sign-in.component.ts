@@ -46,9 +46,12 @@ export class SignInComponent  implements OnInit {
     });
   }
 
-
   async getAccessToken() {
     this.authService.getAccessToken().then((response: any) => {})
+  }
+
+  toSignUp() {
+    this.router.navigate(['/sign-up']);
   }
 
 }

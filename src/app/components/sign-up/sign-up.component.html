@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col">
+        <label>Criar conta no Cut Connect</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Entre com seu e-mail senha para criar conta</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <ion-item>
+          <ion-input label="Email:" formControlName="email"  labelPlacement="stacked" type="email"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">Campo e-mail é obrigatório</ion-text>
+        <ion-text color="danger" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">Campo e-mail é inválido</ion-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <ion-item>
+          <ion-input label="Senha:" formControlName="password" type="password" labelPlacement="stacked"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Campo senha é obrigatório</ion-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-dark" (click)="onSubmit()">Criar</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label (click)="toSignIn()">Voltar</label>
+      </div>
+    </div>
+  </form>
+</div>
