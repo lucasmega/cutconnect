@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './sign-in/sign-in.component';
+
+import { AuthGuard } from './auth.guard';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
@@ -8,13 +11,18 @@ const routes: Routes = [
     component: SignInComponent
   },
   {
-    path: '',
-    redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
+    path: 'login',
+    component: LoginComponent
   },
+  // {
+  //   path: 'folder/:id',
+  //   canActivate: [AuthGuard], 
+  //   loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  // },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: '**', 
+    redirectTo: 'sign-in',
+    pathMatch: 'full' 
   }
 ];
 

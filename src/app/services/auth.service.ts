@@ -37,4 +37,8 @@ export class AuthService {
       console.log(await user.getIdTokenResult());
     }
   }
+
+  isAuthenticated(): boolean {
+    return true;
+  }
 }

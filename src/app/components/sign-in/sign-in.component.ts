@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,22 +10,17 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignInComponent  implements OnInit {
 
-  constructor(private authService: AuthService ) {
+  constructor(private authService: AuthService, private router: Router ) {
   }
 
   ngOnInit() {}
 
-  async signIn() {
-    await this.authService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
-      console.log(response);
-    })
-    .catch((error: any) => {
-      console.error(error)
-    });
+  toLogin() {
+    this.router.navigate(['/login']);
   }
 
-  async register() {
-    await this.authService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
+  async signIn() {
+    await this.authService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
       console.log(response);
     })
     .catch((error: any) => {
@@ -44,7 +40,5 @@ export class SignInComponent  implements OnInit {
   async getAccessToken() {
     this.authService.getAccessToken().then((response: any) => {})
   }
-
-
 
 }
