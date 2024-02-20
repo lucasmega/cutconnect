@@ -28,15 +28,6 @@ export class SignInComponent  implements OnInit {
     });
   }
 
-  async register() {
-    await this.authService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
-      console.log(response);
-    })
-    .catch((error: any) => {
-      console.error(error)
-    });
-  }
-
   async loginWithGoogle() {
     this.authService.loginWithGoogle().then((response: any) => {
       console.log(response)
@@ -49,7 +40,5 @@ export class SignInComponent  implements OnInit {
   async getAccessToken() {
     this.authService.getAccessToken().then((response: any) => {})
   }
-
-
 
 }
