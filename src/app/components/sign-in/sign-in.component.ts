@@ -37,6 +37,16 @@ export class SignInComponent  implements OnInit {
     })
   }
 
+  async register() {
+    await this.authService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
+      console.log(response);
+    })
+    .catch((error: any) => {
+      console.error(error)
+    });
+  }
+
+
   async getAccessToken() {
     this.authService.getAccessToken().then((response: any) => {})
   }

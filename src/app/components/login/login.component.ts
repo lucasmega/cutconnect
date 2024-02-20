@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 
@@ -28,8 +28,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  ngOnDestroy(): void {
+    this.clearFields();
+  }
+
   async signIn() {
-    await this.authService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
+    await this.authService.loginWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then((response: any) => {
       console.log(response);
     })
     .catch((error: any) => {
@@ -38,21 +42,15 @@ export class LoginComponent implements OnInit {
   }
 
   toSignIn() {
-    this.router.navigate(['/sign-in'])
+    this.clearFields();
+    this.router.navigate(['/sign-in']);
   }
 
   onSubmit() {
     this.markControlsAsTouched(this.form);
-    this.form.valid ? this.register() : null;
-  }
+    this.form.valid ? this.signIn() : null;
 
-  async register() {
-    await this.authService.createUserWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then((response: any) => {
-      console.log(response);
-    })
-    .catch((error: any) => {
-      console.error(error)
-    });
+    console.log(this.form);
   }
 
   private markControlsAsTouched(formGroup: FormGroup) {
@@ -66,6 +64,9 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  
+
+  private clearFields() {
+    this.form.reset();
+  }
 
 }
