@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(response);
     })
     .catch((error: any) => {
-      console.error(error)
+      const messsage = this.authService.handleAuthenticationFailure(error.code);
+      alert(messsage);
     });
   }
 
