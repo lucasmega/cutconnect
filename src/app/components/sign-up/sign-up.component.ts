@@ -47,7 +47,7 @@ export class SignUpComponent  implements OnInit, OnDestroy {
 
   async signUp() {
     await this.authService.createUserWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then((response: any) => {
-      console.log(response);
+      this.authService.createSession(response);
     })
     .catch((error: any) => {
       const message = this.authService.handleAuthenticationFailure(error.code);

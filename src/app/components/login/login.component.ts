@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async signIn() {
     await this.authService.loginWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then((response: any) => {
-      console.log(response);
+      this.authService.createSession(response);
     })
     .catch((error: any) => {
       const messsage = this.authService.handleAuthenticationFailure(error.code);

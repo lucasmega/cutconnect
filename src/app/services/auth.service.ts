@@ -69,4 +69,13 @@ export class AuthService {
         return 'Sistema indisponível';
     }
   }
+
+  async createSession(authData: any) {
+    try {
+      localStorage.setItem('authToken', await authData.user.getIdToken());
+      localStorage.setItem('refreshToken', authData.user.refreshToken);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
