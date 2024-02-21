@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -10,50 +11,43 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SignInComponent  implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router ) {
-    this.authService.logout();
-  }
+  constructor(
+    private router: Router, 
+    private authService: AuthService, 
+    private alertController: AlertController 
+    ) { }
 
   ngOnInit() {
+    this.authService.logout();
   }
 
   toLogin() {
     this.router.navigate(['/login']);
   }
 
-  async signIn() {
-    await this.authService.loginWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
-      console.log(response);
-    })
-    .catch((error: any) => {
-      console.error(error)
-    });
-  }
-
   async loginWithGoogle() {
-    this.authService.loginWithGoogle().then((response: any) => {
-      console.log(response)
+   await this.authService.loginWithGoogle().then(async (response: any) => {
+      await this.authService.createSession(response);
+      this.router.navigate(['/home']);
     })
     .catch((error: any) => {
-      console.error(error);
-    })
-  }
-
-  async register() {
-    await this.authService.createUserWithEmailAndPassword("lucas.mega07@gmail.com", "!Lm426367").then((response: any) => {
-      console.log(response);
-    })
-    .catch((error: any) => {
-      console.error(error)
+      const messsage = this.authService.handleAuthenticationFailure(error.code);
+      this.showAlert('Atenção', messsage);
     });
-  }
-
-  async getAccessToken() {
-    this.authService.getAccessToken().then((response: any) => {})
   }
 
   toSignUp() {
     this.router.navigate(['/sign-up']);
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

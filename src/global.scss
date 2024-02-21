@@ -30,13 +30,13 @@
   --ion-menu-text-color: #ffffff; 
 }
 
-ion-header {
+::ng-deep ion-header {
   --ion-background-color: #000000; 
  --ion-color-base: #ffffff; 
  color: #ffffff; 
 }
 
-ion-menu {
+::ng-deep ion-menu {
   --ion-menu-background: #000000;
   --ion-menu-text-color: #ffffff;
   color: #ffffff; 

@@ -39,7 +39,7 @@ export class AuthService {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  loginWithGoogle(): Promise<firebase.auth.UserCredential> {
+  async loginWithGoogle(): Promise<firebase.auth.UserCredential> {
     return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
