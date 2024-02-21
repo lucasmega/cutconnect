@@ -27,15 +27,18 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
      }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.logout();
+   }
 
   ngOnDestroy(): void {
     this.clearFields();
   }
 
   async signIn() {
-    await this.authService.loginWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then((response: any) => {
-      this.authService.createSession(response);
+    await this.authService.loginWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then( async (response: any) => {
+      await this.authService.createSession(response);
+      this.router.navigate(['/home']);
     })
     .catch((error: any) => {
       const messsage = this.authService.handleAuthenticationFailure(error.code);

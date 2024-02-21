@@ -27,14 +27,15 @@ export class AuthService {
   }
 
   logout() {
-    return this.afAuth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
   }
 
   loginWithEmailAndPassword(email: string, password: string): Promise<any> {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
+  async createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
@@ -50,7 +51,16 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return true;
+    return !!localStorage.getItem('authToken');
+  }
+
+
+  getAuthToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  getRefreshToken(): string | null {
+    return localStorage.getItem('refreshToken');
   }
 
   handleAuthenticationFailure(errorCode: string): string {
@@ -70,7 +80,7 @@ export class AuthService {
     }
   }
 
-  async createSession(authData: any) {
+  async createSession(authData: any): Promise<void> {
     try {
       localStorage.setItem('authToken', await authData.user.getIdToken());
       localStorage.setItem('refreshToken', authData.user.refreshToken);
