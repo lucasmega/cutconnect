@@ -10,7 +10,9 @@ import firebase from 'firebase/compat/app';
 export enum AuthErrorCode {
   InvalidCredential = 'auth/invalid-credential',
   EmailAlreadyExists = 'auth/email-already-exists',
-  IdTokenExpired = 'auth/id-token-expired'
+  IdTokenExpired = 'auth/id-token-expired',
+  TooManyRequests = 'auth/too-many-requests',
+  EmailAlreadyInUse = 'auth/email-already-in-use'
 }
 
 @Injectable({
@@ -59,6 +61,10 @@ export class AuthService {
         return 'O e-mail fornecido já está em uso por outro usuário. Cada usuário precisa ter um e-mail exclusivo.';
       case AuthErrorCode.IdTokenExpired:
         return 'O token de código do Firebase provisionado expirou.';
+      case AuthErrorCode.TooManyRequests:
+        return 'O acesso a esta conta foi temporariamente desativado devido a muitas tentativas de login mal sucedidas. Você pode restaurá-lo imediatamente redefinindo sua senha ou tentar novamente mais tarde.';
+      case AuthErrorCode.EmailAlreadyInUse:
+        return 'O e-mail fornecido já está em uso por outro usuário. Cada usuário precisa ter um e-mail exclusivo.';
       default:
         return 'Sistema indisponível';
     }

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 import { AuthService } from '../../services/auth.service';
 
@@ -16,7 +18,8 @@ export class SignUpComponent  implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService, 
     private router: Router, 
-    private fb: FormBuilder
+    private fb: FormBuilder, 
+    private alertController: AlertController
   ) {
     {
       this.form = this.fb.group({
@@ -47,7 +50,8 @@ export class SignUpComponent  implements OnInit, OnDestroy {
       console.log(response);
     })
     .catch((error: any) => {
-      console.error(error)
+      const message = this.authService.handleAuthenticationFailure(error.code);
+      this.showAlert('Atenção', message);
     });
   }
 
@@ -65,6 +69,16 @@ export class SignUpComponent  implements OnInit, OnDestroy {
 
   private clearFields() {
     this.form.reset();
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
