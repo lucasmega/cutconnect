@@ -1,0 +1,24 @@
+.container-fluid {
+    ion-col:nth-child(2) {
+        text-align: right;
+    }
+
+    .calendar {
+        ion-card-header {
+            text-align: center;
+            ion-icon { 
+                font-size: 50px;
+            }
+        }
+    }
+
+    button {
+        height: 54px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 25px;
+    }
+
+    min-height: 100vh;
+    background-color: var(--ion-color-tertiary);
+}
