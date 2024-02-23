@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app'; 
@@ -20,15 +18,40 @@ export enum AuthErrorCode {
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth) {}
+  user$: Observable<firebase.User | null>;
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
+
+  constructor(private afAuth: AngularFireAuth) {
+    this.user$ = afAuth.authState;
+  }
 
   get currentUser() {
     return this.afAuth.authState;
   }
 
+  setAuthentication(isAuthenticated: boolean): void {
+    this.isAuthenticatedSubject.next(isAuthenticated);
+  }
+
+  getAuthentication(): Observable<boolean> {
+    return this.isAuthenticatedSubject.asObservable();
+  }
+
   logout() {
-    localStorage.clear();
-    sessionStorage.clear();
+
+    this.setAuthentication(false);
+
+    this.afAuth.signOut().then(() => {
+
+      localStorage.clear();
+      sessionStorage.clear();
+
+      console.log('Logout feito com sucesso!');
+    })
+    .catch((error: any) => {
+      console.error('Error ao fazer logout', error);
+    });
   }
 
   loginWithEmailAndPassword(email: string, password: string): Promise<any> {
@@ -84,6 +107,7 @@ export class AuthService {
     try {
       localStorage.setItem('authToken', await authData.user.getIdToken());
       localStorage.setItem('refreshToken', authData.user.refreshToken);
+      this.setAuthentication(true);
     } catch (error) {
       console.error(error);
     }

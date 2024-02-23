@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { IonToolbar, IonMenu, IonHeader, MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 export interface Item {
   name: string,
@@ -13,6 +16,8 @@ export interface Item {
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
+  isShowMenu!: Observable<boolean>;
 
   items: Item[] = [
     {
@@ -42,9 +47,15 @@ export class AppComponent implements OnInit {
     },
   ]
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router, private menuController: MenuController) { }
 
   ngOnInit() {
-    console.log(this.authService.isAuthenticated());
+    this.isShowMenu = this.authService.getAuthentication();
+  }
+
+  hideToolbar() {
+    this.authService.logout();
+    this.menuController.close();
+    this.router.navigate(['/sign-in']);
   }
 }
