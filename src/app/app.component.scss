@@ -4,12 +4,22 @@ ion-menu {
 
   ion-list {
     --background: transparent; 
+    color: var(--ion-color-primary);
+    ion-item {
+      color: #000;
+    }
   }
 
   ion-title {
     font-size: 17px;
     text-transform: uppercase;
   }
+
+  ion-icon {
+    font-size: 25px;
+    color: var(--ion-color-secondary);
+  }
+
 
   &.menu-open {
     --ion-background-color: var(--ion-color-tertiary); 
@@ -31,3 +41,4 @@ ion-toolbar {
 ion-title, ion-menu-button {
   margin-top: 15px;
 }
+
