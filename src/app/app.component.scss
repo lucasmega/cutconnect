@@ -1,3 +1,9 @@
+.container-fluid {
+  width: 100vw;
+  min-height: 100px;
+  background-color: (var(--ion-color-secondary));
+}
+
 ion-menu {
   --ion-background-color: var(--ion-color-tertiary); 
   --ion-text-color: var(--ion-color-tertiary); 
@@ -7,6 +13,9 @@ ion-menu {
     color: var(--ion-color-primary);
     ion-item {
       color: #000;
+      .item-native {
+        padding: 0!important;
+      }
     }
   }
 
@@ -38,7 +47,22 @@ ion-toolbar {
   min-height: 80px;
 }
 
+.logo {
+  margin: 0;
+  padding: 0;
+  width: 110%;
+  inset: -16px;
+  min-height: 150px;
+  text-align: center;
+  text-transform: uppercase;
+  label {
+    position: relative;
+    z-index: 9999;
+    top: 13px;
+    font-size: 28px;
+  }
+}
+
 ion-title, ion-menu-button {
   margin-top: 15px;
 }
-

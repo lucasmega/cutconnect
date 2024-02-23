@@ -6,8 +6,13 @@
   </ion-header>
   <ion-content class="ion-padding">
 
+    <ion-toolbar class="logo">
+      <label>Cut Connect</label>
+    </ion-toolbar>
+
+
     <ion-list *ngFor="let item of items">
-      <ion-item (click)="hideToolbar()">
+      <ion-item class="ion-no-padding" (click)="hideToolbar()">
         <ion-grid>
           <ion-row align-items-center>
             <ion-col size="auto">
