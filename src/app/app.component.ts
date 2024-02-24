@@ -56,6 +56,6 @@ export class AppComponent implements OnInit {
   hideToolbar() {
     this.authService.logout();
     this.menuController.close();
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/home/booking']);
   }
 }

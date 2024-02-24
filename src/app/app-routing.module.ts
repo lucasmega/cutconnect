@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth.guard';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PageModuleModule } from './page-module/page-module.module';
+
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { HomeComponent } from './components/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const routes: Routes = [
   {
@@ -23,13 +24,8 @@ const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGuard],
-    component: HomeComponent
+    loadChildren: () => import('./page-module/page-module.module').then(m => m.PageModuleModule)
   },
-  // {
-  //   path: 'folder/:id',
-  //   canActivate: [AuthGuard], 
-  //   loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  // },
   {
     path: '**', 
     redirectTo: 'sign-in',
@@ -39,7 +35,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    PageModuleModule
   ],
   exports: [RouterModule]
 })
