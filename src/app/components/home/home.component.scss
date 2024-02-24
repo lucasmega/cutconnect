@@ -1,36 +1,39 @@
 .container-fluid {
-    ion-col:nth-child(2) {
-        text-align: right;
-    }
-
-    ion-card {
-        box-shadow: none;
-    }
-
-    h4 { font-family: sans-serif; }
-
-    .calendar {
-        ion-card-header {
-            text-align: center;
-            ion-icon { 
-                font-size: 50px;
-            }
-        }
-    }
-
-    button {
-        height: 54px;
-        width: 100%;
-        cursor: pointer;
-        border-radius: 25px;
-        margin-bottom: 15px;
-        background-color: var(--ion-color-primary);
-    }
-
-    .btn-dark {
-        background-color: var(--ion-color-secondary);
-    }
+    height: 100vh;
+    overflow-y: auto;
 
     background-color: var(--ion-color-tertiary);
 }
 
+.container-fluid ion-col:nth-child(2) {
+    text-align: right;
+}
+
+.container-fluid ion-card {
+    box-shadow: none;
+}
+
+.container-fluid h4 { 
+    font-family: sans-serif; 
+}
+
+.container-fluid .calendar ion-card-header {
+    text-align: center;
+}
+
+.container-fluid .calendar ion-card-header ion-icon { 
+    font-size: 50px;
+}
+
+.container-fluid button {
+    height: 54px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    background-color: var(--ion-color-primary);
+}
+
+.container-fluid .btn-dark {
+    background-color: var(--ion-color-secondary);
+}
