@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     {
       name: 'Agendamentos',
       icon: 'calendar-number-outline',
-      path: ''
+      path: '/home/booking'
     },
     {
       name: 'Planos',
@@ -47,15 +47,19 @@ export class AppComponent implements OnInit {
     },
   ]
 
-  constructor(public authService: AuthService, private router: Router, private menuController: MenuController) { }
+  constructor(
+    private router: Router, 
+    public authService: AuthService, 
+    private menuController: MenuController) {
+
+   }
 
   ngOnInit() {
     this.isShowMenu = this.authService.getAuthentication();
   }
 
-  hideToolbar() {
-    this.authService.logout();
+  navigateByPath(path: string) {
     this.menuController.close();
-    this.router.navigate(['/home/booking']);
+    path != '' ? this.router.navigate([path]) : null;
   }
 }

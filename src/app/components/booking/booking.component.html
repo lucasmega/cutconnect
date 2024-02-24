@@ -1,3 +1,61 @@
-<p>
-  booking works!
-</p>
+<div class="container-fluid">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h5>
+          Selecione os detalhes do seu agendamento
+        </h5>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+  
+    <ion-row>
+      <ion-col>
+        <button type="button" class="btn btn-light">
+          <ion-icon name="home-outline"></ion-icon>
+          Selecione a filial
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button type="button" class="btn btn-light">
+          <ion-icon name="person-outline"></ion-icon>
+          Selecione um profissional
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button type="button" class="btn btn-light">
+          <ion-icon name="cut-outline"></ion-icon>
+          Selecione os serviços
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button type="button" class="btn btn-light">
+          <ion-icon name="time-outline"></ion-icon>
+          Selecione um horário
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button type="button" class="btn btn-dark" (click)="toHome()">Voltar</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</div>
