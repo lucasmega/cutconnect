@@ -3,6 +3,19 @@
         text-align: right;
     }
 
+    .card-logo {
+        width: 107%;
+        margin: 0;
+        padding: 0;
+        left: -12px;
+        border-radius: 0;
+        position: relative;
+    }
+
+    ion-card {
+        box-shadow: none;
+    }
+
     .calendar {
         ion-card-header {
             text-align: center;
@@ -17,6 +30,7 @@
         width: 100%;
         cursor: pointer;
         border-radius: 25px;
+        margin-bottom: 15px;
     }
 
     min-height: 100vh;
