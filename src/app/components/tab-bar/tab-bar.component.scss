@@ -1,4 +1,9 @@
 ion-tab-bar {
-    --background: #ffffff;
+  --background: #ffffff;
+  border-top: solid 1px #647088;
+
+  ion-tab:not([selected]) ion-icon {
+    color: #647088;
   }
-  
+
+}
