@@ -27,6 +27,7 @@
 
 .container-fluid {
     .row {
+        margin: 0 0 20px 0;
         .col-2 {
             ion-icon {
                 padding: 5px;
@@ -42,6 +43,10 @@
         }
         label {
             color: #647088;
+        }
+        label.title {
+            color: #000;
+            font-weight: 700;
         }
     }
 }
