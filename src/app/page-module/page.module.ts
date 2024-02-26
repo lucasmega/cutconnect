@@ -9,6 +9,7 @@ import { BookingComponent } from '../components/booking/booking.component';
 
 const routes: Routes = [
   {
+    canActivate: [AuthGuard],
     path: '',
     component: HomeComponent
   },

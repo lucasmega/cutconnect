@@ -1,0 +1,24 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" *ngIf="(isShowMenu | async)">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      Início
+    </ion-tab-button>
+    <ion-tab-button tab="booking">
+      <ion-icon name="search"></ion-icon>
+      Buscar
+    </ion-tab-button>
+    <ion-tab-button tab="booking">
+      <ion-icon name="calendar-number-outline"></ion-icon>
+      Agendamentos
+    </ion-tab-button>
+    <ion-tab-button tab="booking">
+      <ion-icon name="arrow-up-circle-outline"></ion-icon>
+      Planos
+    </ion-tab-button>
+    <ion-tab-button tab="sign-in" (click)="navigateByPath('/sign-in')">
+      <ion-icon name="exit-outline"></ion-icon>
+      Sair
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

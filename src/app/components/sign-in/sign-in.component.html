@@ -1,28 +1,28 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="logo">
-            <label>Cut Connect</label>
-        </div>
+    <div>
+        <ion-label>Cut Connect</ion-label>
     </div>
-    <div class="row">
-        <div class="form">
-            <div class="mb-3">
-                <button type="button" class="btn btn-outline-dark" (click)="loginWithGoogle()">
-                    <span>
-                        <img src="../../../assets/img/icon-google.png">
-                    </span>
-                    Continue com o google
-                </button>
-              </div>
-              <div class="mb-3">
-                <button type="button" class="btn btn-dark" (click)="toLogin()">Login</button>
-              </div>
-              <div class="mb-3">
-                    <label (click)="toSignUp()">Não tem uma conta?</label>
-              </div>
-        </div>
-    </div>
-    <div class="row text-fixed">
-        <label>Por ser um assinante, você confirma que leu e aceitou os termos e politicas de privacidade.</label>
-    </div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button class="btn-custom" (click)="loginWithGoogle()">
+                    <img src="../../../assets/img/icon-google.png">
+                    Continue com o google</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="toLogin()">Login</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label (click)="toSignUp()">Não tem uma conta?</ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-label class="txt-fixed">Por ser um assinante, você confirma que leu e aceitou os termos e politicas de privacidade.</ion-label>
+
 </div>

@@ -13,16 +13,22 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { HomeComponent } from './components/home/home.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { TabBarComponent } from './components/tab-bar/tab-bar.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     LoginComponent, 
     SignUpComponent, 
-    HomeComponent
+    SignInComponent,
+    HomeComponent,
+    TabBarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule, 
