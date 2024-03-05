@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-title>
+      Selecione um profissional
+    </ion-title>
+  </ion-toolbar>
+
+  <div class="container">
+    <ion-list>
+      <ion-item *ngFor="let professional of professionals" (click)="onClick(professional)">
+        <ion-label>
+          <h2>{{professional.name}}</h2>
+          <p>{{professional.position}}</p>
+        </ion-label>
+
+        <ion-avatar slot="start">
+          <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+        </ion-avatar>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

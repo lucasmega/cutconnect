@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import { AuthService } from '../../services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent  implements OnInit, OnDestroy {
     private authService: AuthService, 
     private router: Router, 
     private fb: FormBuilder, 
-    private alertController: AlertController
+    private alertController: AlertController,
+    private userService: UserService
   ) {
     {
       this.form = this.fb.group({
@@ -56,6 +58,12 @@ export class SignUpComponent  implements OnInit, OnDestroy {
       const message = this.authService.handleAuthenticationFailure(error.code);
       this.showAlert('Atenção', message);
     });
+
+    this.registerUser();
+  }
+
+  private registerUser() {
+    this.userService.registerUser().subscribe(success => { console.log }, error => console.error);
   }
 
   private markControlsAsTouched(formGroup: FormGroup) {

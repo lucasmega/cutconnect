@@ -28,6 +28,7 @@ export class SignInComponent  implements OnInit {
   async loginWithGoogle() {
    await this.authService.loginWithGoogle().then(async (response: any) => {
       await this.authService.createSession(response);
+      console.log(response);
       this.router.navigate(['/home']);
     })
     .catch((error: any) => {

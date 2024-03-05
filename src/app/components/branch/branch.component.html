@@ -1,0 +1,22 @@
+<ion-content>
+    <ion-toolbar>
+        <ion-title>
+            Selecione uma filial
+        </ion-title>
+    </ion-toolbar>
+
+    <div class="container">
+        <ion-list>
+            <ion-item *ngFor="let branch of branchs" (click)="onClick(branch)">
+                <ion-avatar slot="start">
+                    <ion-icon name="cut"></ion-icon>
+                </ion-avatar>
+    
+                <ion-label>
+                    <h2>{{branch.name}}</h2>
+                    <p>{{branch.address.street}}, {{branch.address.number}} {{branch.address.district}}</p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

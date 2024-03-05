@@ -17,11 +17,11 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" (click)="openModal('Branch')">
     <div class="col-2">
       <ion-icon name="home-outline"></ion-icon>
     </div>
-    <div class="col-8">
+    <div class="col-8" id="open-modal" expand="block">
       <div><label class="title">Filial</label></div>
       <div><label>Selecione a filial</label></div>
     </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" (click)="openModal('Professional')">
     <div class="col-2">
       <ion-icon name="person-outline"></ion-icon>
     </div>
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" (click)="openModal('Product')">
     <div class="col-2">
       <ion-icon name="cut-outline"></ion-icon>
     </div>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" (click)="openModal('Schedule')">
     <div class="col-2">
       <ion-icon name="time-outline"></ion-icon>
     </div>

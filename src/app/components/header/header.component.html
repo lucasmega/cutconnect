@@ -1,7 +1,23 @@
-<ion-header *ngIf="(isShowHeader$ | async)">
-  <ion-toolbar>
-    <ion-title>
-      <ion-label>Cut Connect</ion-label>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-title>
+    <ion-label>Cut Connect</ion-label>
+  </ion-title>
+</ion-toolbar>
+
+<ion-toolbar [formGroup]="form">
+  <ion-input placeholder="Buscar barbearia " formControlName="search" (ionInput)="onSearch()">
+    <ion-icon name="search" slot="start"></ion-icon>
+  </ion-input>
+</ion-toolbar>
+
+<ion-toolbar *ngIf="barbershops && barbershops.length > 0" class="item-list">
+  <ion-list *ngFor="let barbershop of barbershops" (click)="onClick(barbershop)">
+    <ion-item>
+      <ion-icon name="cut"></ion-icon>
+      <ion-label>
+        <h5>{{barbershop.name}}</h5>
+        <p>{{barbershop.id}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-toolbar>
