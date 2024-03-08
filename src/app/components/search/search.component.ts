@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { AlertController } from '@ionic/angular';
@@ -6,33 +6,32 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { BarbershopModel } from '../../models/barbershop.model';
 import { BarbershopService } from '../../services/barbershop.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
 })
-export class HeaderComponent  implements OnInit, OnDestroy  {
+export class SearchComponent  implements OnInit {
 
   public form: FormGroup;
-  public barbershops!: BarbershopModel[];
+  public barbershops: BarbershopModel[] = [];
+
 
   constructor(
     private fb: FormBuilder, 
     private barbershopService: BarbershopService, 
     private alertController: AlertController,
     private userService: UserService
-    ) {
+    ) { 
     this.form = this.fb.group({
       search: ['']
     });
-   }
+  }
 
-  ngOnInit() { }
-
-  ngOnDestroy(): void { }
+  ngOnInit() {}
 
   onSearch() {
     this.form.get('search')?.valueChanges.pipe(
@@ -51,7 +50,6 @@ export class HeaderComponent  implements OnInit, OnDestroy  {
     this.barbershops.splice(0, this.barbershops.length);
     this.showAlert('Atenção', message, barbershop);
   }
-
 
   async showAlert(header: string, message: string, barbershop: BarbershopModel) {
     const alert = await this.alertController.create({
@@ -77,8 +75,5 @@ export class HeaderComponent  implements OnInit, OnDestroy  {
 
     await alert.present();
   }
-
-
-
 
 }

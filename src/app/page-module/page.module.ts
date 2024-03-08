@@ -13,6 +13,8 @@ import { BranchComponent } from '../components/branch/branch.component';
 import { ProductComponent } from '../components/product/product.component';
 import { BookingComponent } from '../components/booking/booking.component';
 import { ProfessionalComponent } from '../components/professional/professional.component';
+import { SearchComponent } from '../components/search/search.component';
+import { SignatureComponent } from '../components/signature/signature.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     path: 'booking',
     component: BookingComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'search',
+    component: SearchComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'signature',
+    component: SignatureComponent
   }
 ]
 
@@ -33,7 +45,8 @@ const routes: Routes = [
     BranchComponent,
     BookingComponent,
     ProductComponent,
-    ProfessionalComponent
+    ProfessionalComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
