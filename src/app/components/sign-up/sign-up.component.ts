@@ -20,8 +20,7 @@ export class SignUpComponent  implements OnInit, OnDestroy {
     private authService: AuthService, 
     private router: Router, 
     private fb: FormBuilder, 
-    private alertController: AlertController,
-    private userService: UserService
+    private alertController: AlertController
   ) {
     {
       this.form = this.fb.group({
@@ -52,18 +51,14 @@ export class SignUpComponent  implements OnInit, OnDestroy {
   async signUp() {
     await this.authService.createUserWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value).then(async (response: any) => {
       await this.authService.createSession(response);
-      this.router.navigate(['/home']);
+        await this.router.navigate(['/home']);
     })
     .catch((error: any) => {
       const message = this.authService.handleAuthenticationFailure(error.code);
       this.showAlert('Atenção', message);
     });
 
-    this.registerUser();
-  }
-
-  private registerUser() {
-    this.userService.registerUser().subscribe(success => { console.log }, error => console.error);
+    
   }
 
   private markControlsAsTouched(formGroup: FormGroup) {

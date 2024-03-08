@@ -9,13 +9,13 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent  implements OnInit {
+export class SignInComponent implements OnInit {
 
   constructor(
-    private router: Router, 
-    private authService: AuthService, 
-    private alertController: AlertController 
-    ) { }
+    private router: Router,
+    private authService: AuthService,
+    private alertController: AlertController
+  ) { }
 
   ngOnInit() {
     this.authService.logout();
@@ -26,15 +26,15 @@ export class SignInComponent  implements OnInit {
   }
 
   async loginWithGoogle() {
-   await this.authService.loginWithGoogle().then(async (response: any) => {
+    await this.authService.loginWithGoogle().then(async (response: any) => {
       await this.authService.createSession(response);
-      console.log(response);
-      this.router.navigate(['/home']);
+      await this.router.navigate(['/home']);
     })
-    .catch((error: any) => {
-      const messsage = this.authService.handleAuthenticationFailure(error.code);
-      this.showAlert('Atenção', messsage);
-    });
+      .catch((error: any) => {
+        const messsage = this.authService.handleAuthenticationFailure(error.code);
+        this.showAlert('Atenção', messsage);
+      });
+
   }
 
   toSignUp() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { IonTabBar } from '@ionic/angular'
 
 import { AuthService } from '../../services/auth.service';
 
@@ -11,29 +12,22 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './tab-bar.component.html',
   styleUrls: ['./tab-bar.component.scss'],
 })
-export class TabBarComponent  implements OnInit {
-
+export class TabBarComponent implements OnInit {
 
   isShowMenu!: Observable<boolean>;
 
   constructor(
-    private router: Router, 
-    public authService: AuthService, 
-    private menuController: MenuController
+    private router: Router,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
-    this.isShowMenu = this.authService.getAuthentication();
-  }
-
-  navigateByPath(path: string) {
-
-    if (path === 'sign-in') {
-      this.authService.setAuthentication(false);
+    this.isShowMenu = this.authService.isAuthenticated$;
     }
 
-    this.menuController.close();
-    path != '' ? this.router.navigate([path]) : null;
+  navigate() {
+    this.authService.setAuthentication(false);
+    this.authService.getAuthentication().subscribe(() =>  this.router.navigate(['/sign-in']));
   }
 
 }

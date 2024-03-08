@@ -11,20 +11,20 @@
       </ion-col>
     </ion-row>
 
-    <ion-row class="card-service" *ngFor="let service of services">
+    <ion-row class="card-service" *ngFor="let product of products">
       <ion-col>
-        <ion-img src="{{service.img}}" alt="{{service.alt}}"></ion-img>
+        <ion-img src="{{product.image}}" alt="{{product.productName}}"></ion-img>
 
         <div>
           <ion-row>
-            <ion-col class="service-name">{{service.serviceName}}</ion-col>
+            <ion-col class="service-name">{{product.productName}}</ion-col>
           </ion-row>
           <ion-row>
-            <ion-col class="service-price">R$ {{service.price}}</ion-col>
+            <ion-col class="service-price">R$ {{product.unitAmount}}</ion-col>
           </ion-row>
-          <ion-row>
+          <!-- <ion-row>
             <ion-col class="service-time">{{service.time}}</ion-col>
-          </ion-row>
+          </ion-row> -->
         </div>
 
       </ion-col>
