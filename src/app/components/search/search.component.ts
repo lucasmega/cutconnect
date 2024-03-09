@@ -39,7 +39,7 @@ export class SearchComponent  implements OnInit {
       distinctUntilChanged(),
       filter(typed => typed && typed.length >= 3)
     ).subscribe(typed => this.findByPartialName(typed));
-  }
+}
 
   private findByPartialName(name: String) {
     this.barbershopService.findByPartialName(name).subscribe((response: BarbershopModel[]) => this.barbershops = response);

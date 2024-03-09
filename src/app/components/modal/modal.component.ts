@@ -26,5 +26,9 @@ export class ModalComponent  implements OnInit {
     alert(JSON.stringify(professional));
   }
 
+  retriveProduct(product: any) {
+    alert(JSON.stringify(product));
+  }
+
 }
 

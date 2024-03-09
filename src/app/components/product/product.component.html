@@ -1,3 +1,24 @@
-<p>
-  product works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Selecione um serviço</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list lines="none">
+  <ion-item *ngFor="let product of products">
+    
+    <ion-thumbnail slot="end">
+      <img alt="" src="{{product.images[0]}}" />
+    </ion-thumbnail>
+
+    <div *ngFor="let price of prices[0].priceData">
+      <ion-label *ngIf="price.product === product.id">
+        <div *ngIf="price.type == 'one_time'">
+          <h5>{{product.name}}</h5>
+          <p>{{price.unitAmount}}</p>
+        </div>
+      </ion-label>
+    </div>
+
+  </ion-item>
+</ion-list>
