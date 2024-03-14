@@ -48,6 +48,9 @@ import { AuthInterceptor } from './auth.interceptor';
     }),
     ReactiveFormsModule
   ],
+  exports: [
+    HeaderComponent
+  ],
   providers: [
     { 
       provide: RouteReuseStrategy, 

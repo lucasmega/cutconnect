@@ -5,13 +5,14 @@ import { Cost } from 'src/app/models/cost.model';
 import { ProductData } from 'src/app/models/product-data.model';
 import { PriceService } from 'src/app/services/price.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UtilComponent } from '../util/util.component';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent extends UtilComponent implements OnInit {
   public prices: Cost[] = [];
   public products: ProductData[] = [];
   public defaultImage = "https://ionicframework.com/docs/img/demos/thumbnail.svg";
@@ -19,9 +20,11 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private priceService: PriceService
-  ) {}
+  ) {
+    super();
+  }
 
-  ngOnInit() {
+  override ngOnInit() {
     this.getData();
   }
 
@@ -50,4 +53,5 @@ export class ProductComponent implements OnInit {
       }
     );
   }
+
 }

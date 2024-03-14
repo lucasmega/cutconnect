@@ -15,7 +15,7 @@
       <ion-label *ngIf="price.product === product.id">
         <div *ngIf="price.type == 'one_time'">
           <h5>{{product.name}}</h5>
-          <p>{{price.unitAmount}}</p>
+          <p>{{ formatCurrency(price.unitAmount) }}</p>
         </div>
       </ion-label>
     </div>

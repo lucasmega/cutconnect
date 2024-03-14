@@ -1,0 +1,24 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-tertiary);
+        --color: var(--ion-color-quaternary);
+        --border-width: 0 !important;
+        ion-title {
+            font-weight: 700;
+        }
+    }
+}
+
+ion-content {
+    overflow-x: auto;
+    ion-button {
+        width: 100%;
+    }
+}
+
+.selected {
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--ion-color-tertiary);
+    background-color: var(--ion-color-primary);
+  }

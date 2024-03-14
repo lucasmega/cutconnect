@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { HomeService } from '../../services/home.service';
 import { UserService } from 'src/app/services/user.service';
 import { ProductWithPrice } from 'src/app/models/product-with-price';
+import { UtilComponent } from '../util/util.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent  implements OnInit {
+export class HomeComponent extends UtilComponent implements OnInit {
 
   public products: ProductWithPrice[] = [];
 
@@ -32,16 +33,15 @@ export class HomeComponent  implements OnInit {
   ]
 
   constructor(private router: Router, private homeService: HomeService, private userService: UserService) {
+    super();
 
     this.userService.registerUser().subscribe(() => {
       this.homeService.findProductsByEmail().subscribe((response: ProductWithPrice[]) => this.products = response);
     })
    }
 
-  ngOnInit() {}
+  override ngOnInit() {}
 
   toBooking() { this.router.navigate(['/home/booking']); }
-
-
 
 }

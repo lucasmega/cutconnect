@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Selecione uma data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" scrollY="true" style="height: calc(100vh - 300px);">
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col size="auto">
+          <ion-datetime presentation="date" formControlName="date" (ionChange)="onClick()"></ion-datetime>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  <ion-grid *ngIf="hours.length > 0">
+    <ion-row>
+      <ion-col>
+        <h4>Horários disponíveis</h4>
+
+        <ion-list lines="none">
+          <ion-item *ngFor="let hour of hours">
+            <ion-label (click)="chooseTime(hour)"><span [class.selected]="hour === selectedTime">{{hour}}</span></ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="hours.length > 0">
+    <ion-row>
+      <ion-col>
+        <ion-button>Continuar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

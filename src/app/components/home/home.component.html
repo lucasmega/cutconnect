@@ -20,7 +20,7 @@
             <ion-col class="service-name">{{product.productName}}</ion-col>
           </ion-row>
           <ion-row>
-            <ion-col class="service-price">R$ {{product.unitAmount}}</ion-col>
+            <ion-col class="service-price">{{formatCurrency(product.unitAmount)}}</ion-col>
           </ion-row>
           <!-- <ion-row>
             <ion-col class="service-time">{{service.time}}</ion-col>

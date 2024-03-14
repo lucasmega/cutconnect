@@ -15,6 +15,7 @@ import { BookingComponent } from '../components/booking/booking.component';
 import { ProfessionalComponent } from '../components/professional/professional.component';
 import { SearchComponent } from '../components/search/search.component';
 import { SignatureComponent } from '../components/signature/signature.component';
+import { ScheduleComponent } from '../components/schedule/schedule.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,8 @@ const routes: Routes = [
     BookingComponent,
     ProductComponent,
     ProfessionalComponent,
-    SearchComponent
+    SearchComponent,
+    ScheduleComponent
   ],
   imports: [
     CommonModule,

@@ -30,5 +30,9 @@ export class ModalComponent  implements OnInit {
     alert(JSON.stringify(product));
   }
 
+  retriveSchedule(schedule: any) {
+    alert(JSON.stringify(schedule));
+  }
+
 }
 
