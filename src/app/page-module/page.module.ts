@@ -37,6 +37,26 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     path: 'signature',
     component: SignatureComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'branch',
+    component: BranchComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'professional',
+    component: ProfessionalComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'product',
+    component: ProductComponent
+  },
+  {
+    canActivate: [AuthGuard],
+    path: 'schedule',
+    component: ScheduleComponent
   }
 ]
 
